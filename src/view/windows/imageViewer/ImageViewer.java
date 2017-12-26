@@ -19,8 +19,8 @@ import java.io.FileNotFoundException;
 
 public class ImageViewer extends MyStage {
 
-	private static final String STYLESHEET = "/library/view/nodes/imageViewer/ImageViewerStyle.css";
-	private static final Image DEFAULT_IMAGE = new Image("/resources/view.images/errorim.png");
+	private static final String STYLESHEET = "/library/projectStage/nodes/imageViewer/ImageViewerStyle.css";
+	private static final Image DEFAULT_IMAGE = new Image("/resources/projectStage.images/errorim.png");
 
 	private AnchorPane root = new AnchorPane();
 	private HBox imageViewBox;

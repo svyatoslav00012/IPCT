@@ -14,7 +14,7 @@ public class OpenCVUtils {
 			NotificationsController.showError("Wrong info param");
 
 		try {
-			String[] cmd = {"opencv_annotation", "--view.images=" + images.getAbsolutePath(), "--annotations=" + info.getAbsolutePath(), "--maxWindowHeight=1000", "--resizeFactor=3"};
+			String[] cmd = {"opencv_annotation", "--projectStage.images=" + images.getAbsolutePath(), "--annotations=" + info.getAbsolutePath(), "--maxWindowHeight=1000", "--resizeFactor=3"};
 			System.out.println("\n === opencv_annotation === \n");
 			ProcessBuilder pb = new ProcessBuilder(cmd);
 			pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);

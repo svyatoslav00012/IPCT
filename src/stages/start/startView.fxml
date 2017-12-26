@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.start.StartController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="children_pane" stylesheets="/stages/start/startStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <ScrollPane fitToWidth="true" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <content>
+                  <VBox fx:id="recentProjects" spacing="10.0" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="recentProjLabel" alignment="CENTER" layoutX="20.0" layoutY="33.0" prefHeight="50.0" prefWidth="200.0" styleClass="titleLabel" text="Recent projects:" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <HBox alignment="CENTER" layoutX="425.0" layoutY="50.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <ImageView fx:id="logoView" fitHeight="250.0" fitWidth="250.0" layoutX="260.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" styleClass="bigLogo" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="50.0" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" layoutX="226.0" layoutY="235.0" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button layoutX="374.0" layoutY="235.0" mnemonicParsing="false" onAction="#createNew" prefHeight="50.0" prefWidth="200.0" text="create new project" AnchorPane.rightAnchor="174.0" />
+                  <Button layoutX="374.0" layoutY="284.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="open" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

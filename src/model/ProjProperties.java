@@ -1,6 +1,6 @@
-package cascadeTraining;
+package model;
 
-public class Properties {
+public class ProjProperties {
 	public static final String WORK_DIR = "workDir";
 	public static final String HEIGHT_SAMPLES = "height_samples";
 	public static final String WIDTH_SAMPLES = "width_samples";

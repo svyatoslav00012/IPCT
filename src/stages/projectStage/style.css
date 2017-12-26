@@ -1,0 +1,31 @@
+.root{
+    -fx-font-size: 14px;
+}
+
+.panels{
+    -fx-background-color: darkslategrey;
+}
+
+#imagePreparationWindow{
+    -fx-background-color: rgba(255, 0, 0, 0.5);
+}
+
+#createSamplesWindow{
+    -fx-background-color: rgba(0, 255, 0, 0.5);
+}
+
+#trainCascadeWindow{
+    -fx-background-color: rgba(0, 0, 255, 0.5);
+}
+
+
+.selected{
+    -fx-background-color: rgba(255, 255, 255, 1.0);
+    -fx-font-size: 20px;
+}
+
+.unselected{
+    -fx-font-size: 15px;
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-cursor: hand;
+}

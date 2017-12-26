@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import stages.nodes.imageList.ImageList?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="/stages/projectStage/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.projectStage.NewController">
+    <children>
+      <StackPane fx:id="stackPane" layoutX="99.0" layoutY="119.0" prefHeight="150.0" prefWidth="200.0" styleClass="stackPane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <AnchorPane fx:id="imagePreparationWindow" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <GridPane hgap="10.0" prefHeight="400.0" vgap="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <!--<AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />-->
+                        <!--<AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />-->
+                         <ImageList fx:id="positiveImList" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                         <ImageList fx:id="negativeImList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                        <VBox alignment="CENTER" GridPane.rowIndex="1">
+                           <children>
+                              <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="1" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Button layoutX="10.0" layoutY="498.0" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </children></AnchorPane>
+            <AnchorPane fx:id="createSamplesWindow" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="trainCascadeWindow" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </StackPane>
+      <VBox styleClass="panels" layoutX="28.0" layoutY="94.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <Label fx:id="showPrepLabel" alignment="CENTER" onMouseClicked="#showPrepWindow" prefHeight="100.0" prefWidth="200.0" styleClass="panel" text="image preparation" />
+            <Label fx:id="showCreateSamplesLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#showCreateSamplesWindow" prefHeight="100.0" prefWidth="200.0" styleClass="panel" text="create samples" />
+            <Label fx:id="showTrainLabel" alignment="CENTER" layoutX="10.0" layoutY="110.0" onMouseClicked="#showTrainCascadeWindow" prefHeight="100.0" prefWidth="200.0" styleClass="panel" text="train cascade" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

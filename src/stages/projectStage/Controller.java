@@ -1,27 +1,30 @@
-package cascadeTraining.view;
+package stages.projectStage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import model.helpers.FileProcessor;
 import model.helpers.OpenCVUtils;
+import model.ProjProperties;
 import view.windows.alert.AlertController;
 import view.windows.notifications.NotificationsController;
 
 import java.io.*;
-import java.nio.file.CopyOption;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
 public class Controller {
+
+	public static final String PROJ_FXML = "/stages/projectStage/view.fxml";
 
 	private FileProcessor fileProcessor = new FileProcessor();
 
@@ -147,7 +150,7 @@ public class Controller {
 			workDir = choice;
 			initDirsAndFiles();
 			chooseDirLink.setText(workDir.getAbsolutePath());
-			properties.put(cascadeTraining.Properties.WORK_DIR, workDir.getAbsolutePath());
+			properties.put(ProjProperties.WORK_DIR, workDir.getAbsolutePath());
 			storeProps();
 		}
 	}
@@ -364,4 +367,6 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
+
+
 }

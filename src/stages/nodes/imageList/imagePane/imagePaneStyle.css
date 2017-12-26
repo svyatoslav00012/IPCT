@@ -1,0 +1,6 @@
+.statusLabelInPane{
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: yellow;
+    -fx-effect: dropshadow(gaussian, white, 3, 3, 0, 0);
+}

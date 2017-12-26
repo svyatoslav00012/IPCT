@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
@@ -237,7 +238,7 @@ public class FileProcessor {
 		}
 		try {
 			for (File f : dirFrom.listFiles()) {
-				File target = new File(dirTo.getAbsolutePath() + "/" + f.getName());
+				File target = new File(dirTo.getAbsolutePath() + File.separatorChar + f.getName());
 				if (target.exists() && AlertController.showConfirm(target.getName() + " already exist, replace?"))
 					continue;
 				Files.copy(f.toPath(), target.toPath(), REPLACE_EXISTING);
@@ -247,11 +248,38 @@ public class FileProcessor {
 		}
 	}
 
-	public File renamedFile(File srcFile, File targetDir, String postfix) {
-		String name = srcFile.getName();
-		name = name.substring(0, name.lastIndexOf('.')) + postfix + name.substring(name.lastIndexOf('.'));
-		return new File(targetDir.getAbsolutePath() + "/" + name);
+	public void copyFiles(File[] files, File dirTo){
+		copyFiles((File) Arrays.asList(files), dirTo);
 	}
+
+	public void copyFiles(ArrayList<File> files, File dirTo){
+		if(files == null){
+			System.err.println("FileProcessor.copyFiles(File[], File) File[] is null");
+			return;
+		}
+		if(dirTo == null){
+			System.err.println("FileProcessor.copyFiles(File[], File) File is null");
+			return;
+		}
+		if(!dirTo.exists()){
+			System.err.println("FileProcessor.copyFiles(File[], File) File doesn't exists");
+			return;
+		}
+		if(!dirTo.isDirectory()){
+			System.err.println("FileProcessor.copyFiles(File[], File) File isn't directory");
+			return;
+		}
+
+		try{
+			for(File f : files){
+				File target = new File(dirTo.getAbsolutePath() + File.separatorChar + getFreeName(dirTo) + getExtentionWithDot(f));
+				Files.copy(f.toPath(), target.toPath(), REPLACE_EXISTING);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	public void mergeFiles(File from, File to) {
 		try {
@@ -297,5 +325,63 @@ public class FileProcessor {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void updateInfo(File pos, File info) {
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(info)));
+			String in;
+			ArrayList<File> filesInInfo = new ArrayList<>();
+			while((in = reader.readLine()) != null){
+				filesInInfo.add(new File(pos.getAbsolutePath() + File.separatorChar + getImageFileName(in)));
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private String getFreeName(File dir) {
+		if (!dir.isDirectory())
+			return null;
+		ArrayList<File> files = (ArrayList<File>)Arrays.asList( dir.listFiles());
+		boolean found = false;
+		for (int i = 1; ; ++i){
+			found = true;
+			for(int j = 0; j < files.size(); ++j)
+				if(getName_WITHOUT_extension(files.get(j)).equals(i+"")){
+					++i;
+					found = false;
+					break;
+				}
+			if(found) return i+"";
+		}
+	}
+
+	private String getName_WITHOUT_extension(File file){
+		if(!file.isFile()){
+			return null;
+		}
+		if(!file.getName().contains("."))
+			return file.getName();
+		return file.getName().substring(0, file.getName().lastIndexOf('.'));
+	}
+	private String getExtentionWithDot(File file){
+		if(!file.isFile())
+			return null;
+		return file.getName().substring(file.getName().lastIndexOf('.'));
+	}
+
+	public File renamedFile(File srcFile, File targetDir, String postfix) {
+		String name = srcFile.getName();
+		name = name.substring(0, name.lastIndexOf('.')) + postfix + name.substring(name.lastIndexOf('.'));
+		return new File(targetDir.getAbsolutePath() + "/" + name);
+	}
+
+	public String getImageFileName(String line){
+		line = File.separatorChar + line + " ";
+		String file = line.substring(0, line.indexOf(" "));
+		return file.substring(file.lastIndexOf(File.separatorChar));
 	}
 }

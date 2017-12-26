@@ -1,0 +1,45 @@
+.children_pane {
+    -fx-background-color: rgb(78, 99, 110);
+}
+
+.titleLabel{
+    -fx-font-size: 14px;
+}
+
+.scroll-pane > .viewport{
+    -fx-background-color: darkslategrey;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-size: 20px;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.button:hover {
+    -fx-background-color: rgba(255, 116, 0, 0.4);
+}
+
+.nameLabel{
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+.pathLabel{
+    -fx-font-size: 14px;
+    -fx-text-fill: yellow;
+}
+
+.recentTab{
+    -fx-cursor: hand;
+}
+
+#recentProjLabel{
+    -fx-font-size: 16px;
+    -fx-text-fill: yellow;
+}
+
+.recentTab:hover{
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
