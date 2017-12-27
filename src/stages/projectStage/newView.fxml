@@ -10,9 +10,9 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="/stages/projectStage/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.projectStage.NewController">
     <children>
-      <StackPane fx:id="stackPane" layoutX="99.0" layoutY="119.0" prefHeight="150.0" prefWidth="200.0" styleClass="stackPane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+      <StackPane fx:id="stackPane" layoutX="99.0" layoutY="119.0" styleClass="stackPane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
-            <AnchorPane fx:id="imagePreparationWindow" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="imagePreparationWindow" style="-fx-background-color: white;">
                <children>
                   <GridPane hgap="10.0" prefHeight="400.0" vgap="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <columnConstraints>
@@ -26,31 +26,122 @@
                      <children>
                         <!--<AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />-->
                         <!--<AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />-->
-                         <ImageList fx:id="positiveImList" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                         <ImageList fx:id="negativeImList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                         <ImageList fx:id="positiveImList" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                         <ImageList fx:id="negativeImList" GridPane.columnIndex="1" />
                         <VBox alignment="CENTER" GridPane.rowIndex="1">
                            <children>
-                              <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="1" />
+                              <Button onAction="#annotate" mnemonicParsing="false" text="annotate chosen" GridPane.rowIndex="1" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <Button layoutX="10.0" layoutY="498.0" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button onAction="#duplicate" layoutX="10.0" layoutY="498.0" mnemonicParsing="false" text="duplicate chosen" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </VBox>
                      </children>
                   </GridPane>
                </children></AnchorPane>
-            <AnchorPane fx:id="createSamplesWindow" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane fx:id="trainCascadeWindow" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="createSamplesWindow" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <VBox alignment="CENTER" fillWidth="false" spacing="10.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="400.0" layoutY="10.0" prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <Label alignment="CENTER" text="height" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                              <TextField fx:id="crSampHeightField" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <Label alignment="CENTER" text="width" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                              <TextField fx:id="crSampWidthField" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <Button onAction="#createSamples" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="create samples" />
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+            <AnchorPane fx:id="trainCascadeWindow" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <VBox alignment="CENTER" fillWidth="false" spacing="10.0">
+               <children>
+                  <AnchorPane layoutX="400.0" layoutY="120.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="positives" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="400.0" layoutY="180.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="negatives" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="400.0" layoutY="10.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="height" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField promptText="30" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="width" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField promptText="30" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="400.0" layoutY="240.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="stages" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField promptText="15" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="400.0" layoutY="300.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="threads" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField promptText="9" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="400.0" layoutY="360.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="bufer 1" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField promptText="1024" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="400.0" layoutY="420.0" prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" text="bufer 2" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0" />
+                        <TextField promptText="1024" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="train cascade" />
+               </children>
+            </VBox>
          </children>
       </StackPane>
-      <VBox styleClass="panels" layoutX="28.0" layoutY="94.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
+      <VBox layoutX="28.0" layoutY="94.0" prefWidth="200.0" styleClass="panels" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
             <Label fx:id="showPrepLabel" alignment="CENTER" onMouseClicked="#showPrepWindow" prefHeight="100.0" prefWidth="200.0" styleClass="panel" text="image preparation" />
             <Label fx:id="showCreateSamplesLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#showCreateSamplesWindow" prefHeight="100.0" prefWidth="200.0" styleClass="panel" text="create samples" />
             <Label fx:id="showTrainLabel" alignment="CENTER" layoutX="10.0" layoutY="110.0" onMouseClicked="#showTrainCascadeWindow" prefHeight="100.0" prefWidth="200.0" styleClass="panel" text="train cascade" />
          </children>
       </VBox>
+      <MenuBar layoutX="36.0" layoutY="43.0" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

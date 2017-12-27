@@ -7,8 +7,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.Main;
 import model.Project;
+import stages.projectStage.NewController;
 import view.windows.alert.AlertController;
 import view.windows.notifications.NotificationsController;
 import view.windows.stage.MyStage;
@@ -56,6 +58,10 @@ public class NewProjectController {
 		}
 		Project project = new Project(newProject);
 		project.create();
+		((MyStage)nameField.getScene().getWindow()).animatingClose();
+		Main.START_STAGE.animatingClose();
+		NotificationsController.showComplete("Project successfully created");
+		NewController.openProject(project);
 	}
 
 	public void nameChanged(KeyEvent keyEvent) {

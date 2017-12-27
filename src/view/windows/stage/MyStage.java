@@ -33,6 +33,9 @@ public class MyStage extends AnimatingStage {
 		return wcPane;
 	}
 
+	public void setTitleText(String title){
+		getWcPane().setTitle(title);
+	}
 
 	/**
 	 * root must be AnchorPane

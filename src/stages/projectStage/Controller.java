@@ -219,13 +219,13 @@ public class Controller {
 
 	public void annotationInfo(ActionEvent actionEvent) {
 		if(!AlertController.showConfirm("run annotation on info.txt ?"))return;
-		OpenCVUtils.opencv_annotation(pos, info);
+		//OpenCVUtils.opencv_annotation(pos, info);
 		setInfoPathToRelative();
 	}
 
 	public void annotationNewInfo(ActionEvent actionEvent) {
 		if(!AlertController.showConfirm("run annotation on newInfo.txt ?"))return;
-		OpenCVUtils.opencv_annotation(newPos, newInfo);
+		//OpenCVUtils.opencv_annotation(newPos, newInfo);
 		setNewInfoPathToRelative();
 	}
 

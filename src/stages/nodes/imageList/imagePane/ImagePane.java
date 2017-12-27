@@ -20,10 +20,25 @@ public class ImagePane extends AnchorPane {
 		public static final String COPY = "C";
 	}
 
+	private File imageFile;
+	private boolean annotated;
+
+	public boolean isAnnotated(){
+		return annotated;
+	}
+
 	private VBox imageBox;
 	private ImageView imageView;
 	private Label statusLabel;
 	private CheckBox checkBox;
+
+	public boolean isSelected(){
+		return checkBox.isSelected();
+	}
+
+	public File getFile(){
+		return imageFile;
+	}
 
 	public void initNodes(){
 		imageView = new ImageView();
@@ -76,29 +91,39 @@ public class ImagePane extends AnchorPane {
 		init();
 	}
 
-	public ImagePane(Image image) {
+//	public ImagePane(Image image) {
+//		this();
+//		setImage(image);
+//	}
+//
+//	public ImagePane(Image image, String status){
+//		this(image);
+//		setStatus(status);
+//	}
+
+	public ImagePane(File image){
 		this();
 		setImage(image);
-	}
-
-	public ImagePane(Image image, String status){
-		this(image);
-		setStatus(status);
 	}
 
 	public ImagePane(String line, Project project, boolean info){
 		this();
 		line = File.separatorChar + line + " ";
 		String fileName = line.substring(0, line.indexOf(" "));
-		System.out.println("IMAGE: " + project.getLocation().getAbsolutePath() + fileName);
-		Image image = new Image(String.valueOf(new File(project.getLocation().getAbsolutePath() + fileName).toURI()));
-		if(line.length() - fileName.length() > 3)
+		setImage(new File(project.getLocation().getAbsolutePath() + fileName));
+		if(line.length() - fileName.length() > 3) {
 			statusLabel.setText(Status.ANNOTATED);
-		setImage(image);
+			annotated = true;
+		}
 	}
 
-	public void setImage(Image image){
+	private void setImage(Image image){
 		imageView.setImage(image);
+	}
+
+	public void setImage(File image){
+		imageFile = image;
+		setImage(new Image(image.toURI().toString()));
 	}
 
 	public void setStatus(String status){
@@ -115,7 +140,7 @@ public class ImagePane extends AnchorPane {
 		System.err.println("Unknown status!");
 	}
 
-	public void setChoosen(boolean choosen){
+	public void select(boolean choosen){
 		checkBox.setSelected(choosen);
 	}
 }

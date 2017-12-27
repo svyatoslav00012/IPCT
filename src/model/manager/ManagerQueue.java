@@ -10,6 +10,7 @@ public class ManagerQueue extends ArrayList<Runnable> {
 	}
 
 	public void push(Runnable r){
+		System.out.println("PUSH");
 		add(r);
 	}
 
@@ -17,7 +18,7 @@ public class ManagerQueue extends ArrayList<Runnable> {
 		return isEmpty() ? null : get(0);
 	}
 
-	public Runnable poll(){
+	public synchronized Runnable poll(){
 		Runnable r = isEmpty() ? null : get(0);
 		remove(0);
 		return r;

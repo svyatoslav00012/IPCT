@@ -1,3 +1,34 @@
 .root{
     -fx-font-size: 14px;
 }
+
+.a {
+    -fx-text-decoration: none;
+    -fx-outline: none;
+    -fx-text-fill: #003366;
+    -fx-display: inline-block;
+    -fx-padding-left: 200px;
+    -fx-margin: 0px 167px;
+    -fx-position: center;
+    -fx-overflow: hidden;
+    -fx-border: 15px solid #f70a12;
+    -fx-border-radius: 8px;
+    -fx-font:15px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    -fx-font-weight:bold;
+    -fx-color: #26734d;
+    -fx-transition: .2s ease-in-out;
+}
+
+.a:hover {
+    -fx-background-color: #003366;
+    -fx-text-fill: #26734d;
+}
+
+.b{
+    -fx-background-color:#339966;
+}
+.titleLabel{
+    -fx-font:20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: #003366;
+}

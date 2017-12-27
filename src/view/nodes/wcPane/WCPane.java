@@ -16,6 +16,7 @@ public class WCPane extends AnchorPane{//window control pane
 
 	private static final String STYLE_SHEET = "/view/nodes/wcPane/wcPaneStyle.css";
 
+
 	class LNTPane extends HBox{ // Logo and title pane
 
 		private ImageView logo;
@@ -71,6 +72,10 @@ public class WCPane extends AnchorPane{//window control pane
 		AnchorPane.setTopAnchor(this, 0.0);
 		AnchorPane.setLeftAnchor(this, 0.0);
 		AnchorPane.setRightAnchor(this, 0.0);
+	}
+
+	public void setTitle(String title) {
+		getLntPane().title.setText(title);
 	}
 
 	public WCPane(String title, double height, WCBTypes... buttons){
